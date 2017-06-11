@@ -44,7 +44,9 @@
 
 -(void)getPhotosOfPage :(NSString*)searchString pageNumber:(NSInteger)pageToGet completionHandler:(void (^)(PhotoSearchResult* searchResult,NSError* error))completionHandler
 {
-    NSString *string = [NSString stringWithFormat:@"%@%ld%@%@",@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3e7cc266ae2b0e0d78e279ce8e361736&page=",pageToGet,@"&per_page=500&format=json&nojsoncallback=1&safe_search=1&text=",searchString];
+    NSLog(@"page number is %ld",pageToGet);
+    NSString *string = [NSString stringWithFormat:@"%@%ld%@%@",@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3e7cc266ae2b0e0d78e279ce8e361736&per_page=500&page=",pageToGet,@"&format=json&nojsoncallback=1&safe_search=1&text=",searchString];
+    NSLog(@"url is %@",string);
     NSURL *url = [NSURL URLWithString:string];
     
     [self downloadDataFromURL:url completionHandler:^(NSURLResponse *response, id responseObject, NSError *error){
