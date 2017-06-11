@@ -204,7 +204,6 @@
 				TargetAttributes = {
 					800315E91EEAAE7800189246 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = B9C7GRQCYQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -423,7 +422,7 @@
 			baseConfigurationReference = 98D88247906CDBE51C3F234F /* Pods-Flickr-Photos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B9C7GRQCYQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Flickr-Photos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -437,7 +436,7 @@
 			baseConfigurationReference = C114BAD6A3A837A12DC741EF /* Pods-Flickr-Photos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B9C7GRQCYQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Flickr-Photos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
