@@ -157,19 +157,43 @@
 }
 
  //fetch more photos depending on scrolling
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+/*-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     for (UICollectionViewCell *cell in [self.photoGridView visibleCells]) {
         NSIndexPath *indexPath = [self.photoGridView indexPathForCell:cell];
-        //NSLog(@"indexpath is %ld",(long)indexPath.row);
+        NSLog(@"indexpath is %ld",(long)indexPath.row);
         if(self.searchResult.photos.count < indexPath.row && !self.isRequestInProgress)
         {
             //request for more photos
             NSLog(@"fetching more photos");
             [self addLoadingIndicator];
+            NSLog(@"page fetched is %d",self.searchResult.currentPage);
             [self fetchPageForString:self.searchString pageToGet:self.searchResult.currentPage+1];
         }
     }
+}*/
+
+-(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.searchResult.photos.count < indexPath.row && !self.isRequestInProgress)
+    {
+        //request for more photos
+        NSLog(@"indexpath is %ld",indexPath.row);
+        NSLog(@"fetching more photos");
+        [self addLoadingIndicator];
+        NSLog(@"page fetched is %ld",self.searchResult.currentPage);
+        [self fetchPageForString:self.searchString pageToGet:self.searchResult.currentPage+1];
+       
+        /*//for some weird reason page 2 returns null results for photos
+        if(self.searchResult.currentPage == 1){
+            [self fetchPageForString:self.searchString pageToGet:self.searchResult.currentPage+2];
+        }
+        else{
+            [self fetchPageForString:self.searchString pageToGet:self.searchResult.currentPage+1];
+        }*/
+        
+    }
+
 }
 
 -(void)fetchPageForString:(NSString*)searchString pageToGet:(NSInteger)page
@@ -182,7 +206,10 @@
             [self showError:error.localizedDescription];
         }
         else{
-            [self.searchResult.photos addObjectsFromArray:searchResult.photos];
+            //[self.searchResult upda searchResult.photos];
+            NSLog(@"photos received are %ld",searchResult.photos.count);
+            [self.searchResult addMorePhotos:searchResult.photos];
+            [self.searchResult updateCurrentPageNumber:searchResult.currentPage];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self hideLoadingIndicator];
                 [self.photoGridView reloadData];

@@ -31,11 +31,20 @@
         _photosPerPage = photosPerPage;
         _totalPhotos = totalPhotos;
         _photos = photos;
+        _currentPage = currentPage;
     }
     
     return self;
 }
 
+-(void)addMorePhotos:(NSMutableArray*)photos
+{
+    [_photos addObjectsFromArray:photos];
+}
 
+-(void)updateCurrentPageNumber : (NSInteger)pageNumber
+{
+    _currentPage = pageNumber;
+}
 
 @end

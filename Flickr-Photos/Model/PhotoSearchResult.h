@@ -22,4 +22,7 @@
 
 
 -(instancetype)initWithTotalPages:(NSInteger)totalPages photosPerPage:(NSInteger)photosPerPage totalPhotos:(NSInteger)totalPhotos photosArray:(NSMutableArray*)photos currentPage:(NSInteger)currentPage;
+
+-(void)addMorePhotos:(NSMutableArray*)photos;
+-(void)updateCurrentPageNumber : (NSInteger)pageNumber;
 @end
